@@ -1,0 +1,273 @@
+<!--
+  Tệp: linh_gia_linh_profile.html
+  Hướng dẫn nhanh:
+  - Để chèn ảnh: thay đổi đường dẫn trong thẻ <img id="profile-photo"> (ví dụ: images/myphoto.jpg)
+    hoặc sử dụng nút "Chọn ảnh" trên trang để xem trước ảnh.
+  - Lưu file này dưới dạng .html và mở bằng trình duyệt (double-click hoặc kéo vào trình duyệt).
+  - Bạn có thể chỉnh sửa văn bản (tên, sinh ngày, lớp, sở thích, link mạng xã hội) trực tiếp trong file.
+-->
+
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Linh — Giới thiệu</title>
+    <style>
+        :root {
+            --burgundy: #800020;
+            /* nền đỏ đô */
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --muted: #6b6b6b;
+            --accent: #f2dede;
+            --maxw: 980px;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            background: linear-gradient(180deg, var(--burgundy) 0%, #5a0016 100%);
+            color: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 30px;
+
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--maxw);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
+            padding: 28px;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(6px);
+        }
+
+        header {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .logo {
+            width: 84px;
+            height: 84px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex: 0 0 84px;
+            border: 3px solid rgba(255, 255, 255, 0.12);
+            background: var(--card-bg);
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block
+        }
+
+        h1 {
+            margin: 0;
+            color: #fff;
+            font-size: 26px
+        }
+
+        p.lead {
+            margin: 4px 0 0;
+            color: var(--accent);
+            font-size: 14px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+            align-items: stretch;
+            /* 👈 thêm dòng này */
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 18px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+            height: 100%;
+            /* 👈 thêm dòng này */
+
+        }
+
+        .profile-photo {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 10px;
+            object-fit: cover;
+            display: block;
+            margin-bottom: 12px;
+            background: linear-gradient(180deg, #eee, #ddd);
+        }
+
+        .small {
+            font-size: 13px;
+            color: var(--muted)
+
+            
+        }
+
+        a {
+            text-decoration: none;
+            /* Bỏ gạch chân */
+            color: inherit;
+            /* Giữ nguyên màu chữ như xung quanh */
+        }
+
+        a:hover {
+            text-decoration: underline;
+            /* (Tùy chọn) hiện gạch chân khi rê chuột */
+            color: #b30059;
+            /* (Tùy chọn) đổi màu khi hover */
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            margin: 8px 0
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600
+        }
+
+        .btn-primary {
+            background: #800020;
+            color: #fff
+        }
+
+        .social a {
+            display: inline-block;
+            margin-right: 8px;
+            text-decoration: none;
+            padding: 6px 10px;
+            border-radius: 8px;
+            background: #fff;
+            font-weight: 600
+        }
+
+        /* responsive */
+        @media (max-width:880px) {
+            .grid {
+                grid-template-columns: 1fr
+            }
+
+            .logo {
+                width: 68px;
+                height: 68px;
+                flex: 0 0 68px
+            }
+
+            h1 {
+                font-size: 20px
+            }
+        }
+
+        /* preview file input custom */
+        .file-row {
+            display: flex;
+            gap: 10px;
+            align-items: center
+        }
+
+        .file-row input[type=file] {
+            display: block
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+
+                <img id="logo-img" src="linh.jpg" alt="Logo">
+            </div>
+            <div>
+                <h1>Đào Thị Gia Linh</h1>
+                <p class="lead">Sinh ngày: 19/07/2008 • Quê quán: Nam Triều, Phú Xuyên, Hà Nội</p>
+            </div>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <img id="profile-photo" class="profile-photo" src="lop.jpg" alt="Ảnh đại diện">
+
+                <div style="margin-top:12px">
+                    <p class="small"><strong>Về Linh:</strong></p>
+                    <p>Mình là một học sinh lớp 12 đang học tập tại trường trung học phổ thông Phú Xuyên A , khóa 2023-
+                        2026.</p>
+                    <p>Câu slogan của mình là : Đến đâu hay đến đấy =))</p>
+                    <div class="info-row">
+                        <div>
+                            <p class="small">Lớp</p>
+                            <p>12A2</p>
+                        </div>
+                        <div>
+                            <p class="small">Cô chủ nhiệm</p>
+                            <p>Mai Linh</p>
+                        </div>
+                    </div>
+
+                    <p class="small">Lớp có 47 thành viên và mình có chức vụ là bí thư lớp.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Thông tin liên hệ</h3>
+                <p class="small">Email: <a href="mailto:gialinhdao19@gmail.com">gialinhdao19@gmail.com</a></p>
+                <div class="social">
+                    <a href="https://www.facebook.com/gia.linh.dao7777?rdid=SadJB3UfaVD8WXPI&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1J5Hd4MxGD%2F#"
+                        target="_blank">Facebook</a>
+                    <a href="https://www.tiktok.com/@gialinhdaoo0" target="_blank">TikTok</a>
+                    <a href="https://www.instagram.com/gninhdaooo?igsh=Z3J4c3Rjbzh6dGll" target="_blank">Instagram</a>
+                </div>
+                <hr>
+                <h3>Ghi chú</h3>
+                <p class="small">- Mình online từ 8h đến 24h hàng ngày.</p>
+                <p class="small">- Hãy bấm vào link hoặc nhấn đúp vào các ký hiệu mạng xã hội để tìm hiểu thông tin của
+                    nhau nhé. </p>
+                <hr>
+                <h3><a href="mon_an.html" target="_blank">Món ăn yêu thích 🍜</a></h3>
+                <p class="small">- Bim bim</p>
+                <p class="small">- Các loại mỳ (phở, mỳ ý, mỳ tôm, bánh mì)</p>
+                <p class="small">- Gà rán</p>
+                <hr>
+                <h3><a href="dia_diem.html" target="_blank">Địa điểm muốn đến 🏞️</a></h3>
+                <p class="small">- Hàn Quốc</p>
+                <p class="small">- Hạ Long Park</p>
+                <p class="small">- Thành phố Huế</p>
+                <p class="small">- Vùng đất Anime</p>
+            </div>
+        </div>
+
+        <footer style="margin-top:18px;text-align:center;color:rgba(255,255,255,0.85);font-size:13px">
+            © Linh — Trang giới thiệu cá nhân
+        </footer>
+    </div>
+
+
+
+</body>
+
+</html>
